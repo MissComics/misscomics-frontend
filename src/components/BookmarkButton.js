@@ -1,10 +1,12 @@
-import BookmarkButton from '@/components/BookmarkButton'
+import { BookMarked } from 'lucide-react'
 
-export default function ComicPage() {
+export default function BookmarkButton() {
   return (
-    <div>
-      <h1>Comic Title</h1>
-      <BookmarkButton />
-    </div>
+    <button 
+      className="p-2 rounded-full hover:bg-gray-800 active:scale-90 transition-all duration-150"
+      onClick={() => console.log('bookmarked')}
+    >
+      <BookMarked className="w-6 h-6 text-purple-400" />
+    </button>
   )
 }
