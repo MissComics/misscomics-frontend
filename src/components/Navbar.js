@@ -6,13 +6,14 @@ import { Home, Settings } from 'lucide-react'
 
 const Navbar = () => {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  // Temporary state to test the toggle logic
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isBurgerActive, setIsBurgerActive] = useState(false);
+  
+  // This is a placeholder. Later, this will be true if the user is logged in.
+  const [isLoggedIn, setIsLoggedIn] = useState(true); 
 
-  const handleDelete = () => {
-    if (window.confirm("Are you sure? This will permanently delete your comic history.")) {
-      console.log("Deleting data...");
-    }
+  const toggleBurger = () => {
+    setIsBurgerActive(!isBurgerActive);
+    // You can add logic here to open a side menu later!
   };
 
   return (
@@ -27,9 +28,12 @@ const Navbar = () => {
           <Link href="/browse" className="text-gray-400 hover:text-white transition">Browse</Link>
         </li>
 
-        {/* Your Custom Hamburger / Action Icon */}
-        <button className="text-2xl hover:animate-bounce">
-          🍔 {/* Replace this with your Lottie/SVG code later */}
+        {/* Hamburger Icon - Only reacts on Click */}
+        <button 
+          onClick={toggleBurger}
+          className={`text-2xl transition-all duration-300 transform ${isBurgerActive ? 'scale-125 rotate-12' : 'scale-100'}`}
+        >
+          🍔
         </button>
 
         <div className="relative">
@@ -42,20 +46,25 @@ const Navbar = () => {
 
           {isSettingsOpen && (
             <div className="absolute right-0 mt-4 w-52 bg-gray-900 border border-gray-700 rounded-xl shadow-2xl z-50">
-              <div className="flex flex-col p-2">
+              <div className="flex flex-col p-2 text-sm">
+                
+                {/* If Logged In: Show all user controls */}
                 {isLoggedIn ? (
                   <>
-                    <Link href="/profile" className="p-3 hover:bg-purple-600 rounded-lg text-white">Profile</Link>
-                    <Link href="/dashboard" className="p-3 hover:bg-purple-600 rounded-lg text-white">Dashboard</Link>
-                    <button onClick={handleDelete} className="text-left p-3 text-red-400 hover:bg-red-900 rounded-lg">Delete My Data</button>
+                    <Link href="/profile" className="p-3 hover:bg-purple-600 rounded-lg text-white transition">Profile</Link>
+                    <Link href="/dashboard" className="p-3 hover:bg-purple-600 rounded-lg text-white transition">Dashboard</Link>
+                    <button className="text-left p-3 hover:bg-purple-600 rounded-lg text-white transition">UI Settings</button>
                     <hr className="border-gray-800 my-1" />
-                    <button onClick={() => setIsLoggedIn(false)} className="text-left p-3 hover:bg-gray-800 rounded-lg text-white">Logout</button>
+                    <button onClick={() => window.confirm('Delete all data?')} className="text-left p-3 text-red-400 hover:bg-red-900 rounded-lg transition">Delete My Data</button>
+                    <button onClick={() => setIsLoggedIn(false)} className="text-left p-3 hover:bg-gray-800 rounded-lg text-white transition">Logout</button>
                   </>
                 ) : (
-                  <Link href="/auth/signup" className="p-3 bg-purple-600 hover:bg-purple-700 rounded-lg text-white text-center">
+                  /* If Logged Out: Only show Sign Up */
+                  <Link href="/auth/signup" className="p-3 bg-purple-600 hover:bg-purple-700 rounded-lg text-white text-center font-bold">
                     Sign Up / Login
                   </Link>
                 )}
+                
               </div>
             </div>
           )}
