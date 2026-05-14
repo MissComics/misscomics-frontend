@@ -1,3 +1,5 @@
+'use client'
+
 export default function Footer() {
   return (
     <footer className="flex items-center justify-center px-6 py-8 border-t border-gray-800">
