@@ -1,4 +1,4 @@
-import { BookMarked } from 'lucide-react'
+import { Bookmark } from 'lucide-react'
 
 export default function BookmarkButton() {
   return (
@@ -6,7 +6,7 @@ export default function BookmarkButton() {
       className="p-2 rounded-full hover:bg-gray-800 active:scale-90 transition-all duration-150"
       onClick={() => console.log('bookmarked')}
     >
-      <BookMarked className="w-6 h-6 text-purple-400" />
+      <Bookmark className="w-6 h-6 text-purple-400" />
     </button>
   )
 }
