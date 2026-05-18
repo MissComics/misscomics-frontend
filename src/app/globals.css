@@ -16,13 +16,15 @@ body {
 
 @layer utilities {
   .btn_white { 
-    @apply  border-white bg-white px-8 py-3 text-green-50
+    @apply border-white bg-white px-8 py-3 text-green-600; /* Fixed standard number from 50 to 600 */
   }
   .btn_white_text  { 
-    @apply  border-white bg-white px-8 py-3 text-gray-90
+    @apply border-white bg-white px-8 py-3 text-gray-900; /* Fixed standard number from 90 to 900 */
   }
   .btn_green  { 
-    @apply  border-green-50 bg-green-50 px-8 py-5 text-white
+    @apply border-green-600 bg-green-600 px-8 py-5 text-white; 
+  }
+  /* ... Rest of your config rules */
   }
   .btn_dark_green { 
     @apply  bg-green-90 px-8 py-4 text-white transition-all hover:bg-black
