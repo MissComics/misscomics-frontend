@@ -135,7 +135,7 @@ const SETTINGS_ITEMS = [
   { label: 'Profile',         href: '/profile' },
   { label: 'Subscription',    href: '/subscription' },
   { label: 'Dashboard Edit',  href: '/dashboard/edit' },
-  { label: 'Connect w\' Us', href: '/connect' },
+  { label: 'Connect W/ us', href: '/connect' },
   { label: 'Suggestion Board', href: '/suggestions' },
 ]
 
