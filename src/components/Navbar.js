@@ -10,6 +10,43 @@ import {
   Home
 } from 'lucide-react'
 
+// ─── Cartoon MissComic Brand Logo ───────────────────────────────────────────
+function MissComicLogo() {
+  return (
+    <div className="flex items-center gap-2.5 select-none group cursor-pointer">
+      {/* Playful Brand Graphic Icon */}
+      <svg
+        className="w-9 h-9 transform group-hover:scale-110 group-hover:rotate-[-4deg] transition-all duration-300"
+        viewBox="0 0 200 200"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path 
+          d="M20 100 C20 40, 40 20, 100 20 C160 20, 180 40, 180 100 C180 160, 160 180, 100 180 C80 180, 45 185, 25 195 C28 175, 20 150, 20 100 Z" 
+          fill="#A855F7" 
+          stroke="#000000" 
+          strokeWidth="12" 
+          strokeLinejoin="round"
+        />
+        <path 
+          d="M55 135 L55 70 L85 105 L115 70 L115 135" 
+          stroke="#FFFFFF" 
+          strokeWidth="16" 
+          strokeLinecap="round" 
+          strokeLinejoin="round"
+        />
+        <circle cx="145" cy="65" r="10" fill="#FBCA4E" />
+      </svg>
+
+      {/* Styled Brand Heading Text */}
+      <span className="text-xl font-black tracking-tight text-white font-sans 
+                       group-hover:text-purple-400 transition-colors duration-300">
+        Miss<span className="text-purple-500 group-hover:text-white transition-colors duration-300">Comic</span>
+      </span>
+    </div>
+  )
+}
+
 // ─── Cartoon Hamburger SVG ────────────────────────────────────────────────────
 function BurgerIcon({ isOpen }) {
   const baseTransition = {
@@ -153,8 +190,8 @@ function BurgerIcon({ isOpen }) {
 
 // ─── Hamburger menu items ─────────────────────────────────────────────────────
 const BURGER_ITEMS = [
-  { key: 'ads',       label: 'Ads',             href: '/ads' },
-  { key: 'tags',      label: 'Tags',            href: '/tags' },
+  { key: 'ads',       label: 'Ads',            href: '/ads' },
+  { key: 'tags',      label: 'Tags',           href: '/tags' },
   { key: 'nothing',   label: 'Nothing Burger',  href: '/nothing' },
   { key: 'dashboard', label: 'Dashboard',       href: '/dashboard' },
   { key: 'favauthor', label: 'Fav Author',      href: '/fav-author' },
@@ -162,10 +199,10 @@ const BURGER_ITEMS = [
 
 // ─── Settings menu items ──────────────────────────────────────────────────────
 const SETTINGS_ITEMS = [
-  { label: 'Profile',          href: '/profile' },
-  { label: 'Subscription',     href: '/subscription' },
+  { label: 'Profile',           href: '/profile' },
+  { label: 'Subscription',      href: '/subscription' },
   { label: 'Dashboard Edit',   href: '/dashboard/edit' },
-  { label: 'Connect W/ us',    href: '/connect' },
+  { label: 'Connect W/ us',     href: '/connect' },
   { label: 'Suggestion Board', href: '/suggestions' },
 ]
 
@@ -209,9 +246,9 @@ const Navbar = () => {
       <nav className="hidden md:flex relative items-center justify-between
                       px-6 py-3 border-b border-gray-800 bg-black z-50">
 
-        <Link href="/" className="text-xl font-bold text-white tracking-tight
-                                   hover:text-purple-400 transition-colors">
-          MissComic
+        {/* SWAPPED: Text heading link upgraded with the cartoon MissComic Logo component */}
+        <Link href="/" aria-label="MissComic Home">
+          <MissComicLogo />
         </Link>
 
         <div className="flex items-center gap-4">
@@ -296,7 +333,7 @@ const Navbar = () => {
                     </p>
                     {BURGER_ITEMS.map(item => (
                       <button
-                        key={item.key}
+                        key={item.key} /* PATCHED: Added unique key tracking for loop */
                         onClick={() => handlePinItem(item.key)}
                         className={`flex items-center gap-2 px-2 py-2 rounded-lg
                                     text-xs transition w-full text-left
@@ -313,7 +350,7 @@ const Navbar = () => {
                       <button
                         onClick={() => { setPinnedItem(null); setSubPanelOpen(false) }}
                         className="flex items-center gap-2 px-2 py-2 rounded-lg
-                                    text-xs text-red-500 hover:bg-red-950 transition">
+                                   text-xs text-red-500 hover:bg-red-950 transition">
                         ✕ Remove pin
                       </button>
                     )}
